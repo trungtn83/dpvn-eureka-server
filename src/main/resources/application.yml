@@ -1,0 +1,36 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: dpvn-eureka-server
+
+# eureka by default will register itself as a client. So, we need to set it to false.
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 60000
+    peer-node-read-timeout-ms: 60000
+
+---
+spring:
+  config:
+    activate:
+      on-profile: default, command, local
+
+eureka:
+  instance:
+    hostname: localhost
+
+---
+spring:
+  config:
+    activate:
+      on-profile: production
+
+eureka:
+  instance:
+    hostname: 103.1.239.43
