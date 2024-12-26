@@ -33,4 +33,4 @@ spring:
 
 eureka:
   instance:
-    hostname: 103.1.239.43
+    hostname: 160.30.112.181
