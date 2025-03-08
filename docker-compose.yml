@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  eureka-server:
+    build: 
+      context: .
+      args:
+        CACHEBUST: ${CACHEBUST:-$(date +%s)}
+    restart: unless-stopped
+    container_name: dpvn-eureka-server
+    image: dpvn-eureka-server:0.0.1
+    ports:
+      - "8761:8761"
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+    networks:
+      - dpvn-network
+
+networks:
+  dpvn-network:
+    external: true
